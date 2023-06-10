@@ -1,0 +1,649 @@
+# Translation of Themes - Twenty Twenty-One in Hebrew
+# This file is distributed under the same license as the Themes - Twenty Twenty-One package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2021-02-05 18:01:50+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.0-alpha.4\n"
+"Language: he_IL\n"
+"Project-Id-Version: Themes - Twenty Twenty-One\n"
+
+#. Theme Name of the theme
+#: classes/class-twenty-twenty-one-dark-mode.php:381 inc/block-patterns.php:24
+#, gp-priority: high
+msgid "Twenty Twenty-One"
+msgstr "עשרים עשרים ואחת"
+
+#. Description of the theme
+#, gp-priority: high
+msgid "Twenty Twenty-One is a blank canvas for your ideas and it makes the block editor your best brush. With new block patterns, which allow you to create a beautiful layout in a matter of seconds, this theme’s soft colors and eye-catching — yet timeless — design will let your work shine. Take it for a spin! See how Twenty Twenty-One elevates your portfolio, business website, or personal blog."
+msgstr "עשרים עשרים ואחת היא לוח חלק, בד ציור עבור הרעיונות שלכם, ועורך הבלוקים הוא המכחול המשובח שלכם. מקבצי הבלוקים החדשים מאפשרים ליצור עימוד מרהיב בשניות. הצבעוניות נעימה העיצוב מושך עין, עיצוב מהסוג שלא מתיישן, כזה שמאיר את התוכן ומחמיא לו. קחו אותה לסיבוב! ותראו איך עשרים עשרים ואחת מעלה את הפורטפוליו שלכם, מרימה את האתר של העסק ומטיסה את הבלוג האישי."
+
+#: inc/template-tags.php:230
+msgid "Newer <span class=\"nav-short\">posts</span>"
+msgstr "פוסטים חדשים<span class=\"nav-short\">יותר</span>"
+
+#: inc/template-tags.php:241
+msgid "Older <span class=\"nav-short\">posts</span>"
+msgstr "פוסטים <span class=\"nav-short\">קודמים</span>"
+
+#. translators: %s: Twenty Twenty-One support article URL.
+#: classes/class-twenty-twenty-one-dark-mode.php:177
+msgid "Dark Mode is a device setting. If a visitor to your site requests it, your site will be shown with a dark background and light text. <a href=\"%s\">Learn more about Dark Mode.</a>"
+msgstr "מצב כהה הוא הגדרה מקומית במכשיר, אם מבקר באתר מבקש זאת, האתר יוצג עם רקע כהה וטקסט בהיר. <a href=\"%s\">קבל מידע נוסף על מצב כהה.</a>"
+
+#: classes/class-twenty-twenty-one-dark-mode.php:134
+msgid "Colors & Dark Mode"
+msgstr "צבעים ומצב כהה"
+
+#: classes/class-twenty-twenty-one-dark-mode.php:379
+msgid "Suggested text:"
+msgstr "טקסט מוצע:"
+
+#: classes/class-twenty-twenty-one-customize-notice-control.php:39
+msgid "To access the Dark Mode settings, select a light background color."
+msgstr "כדי לגשת להגדרות מצב כהה, בחרו  צבע רקע בהיר."
+
+#: classes/class-twenty-twenty-one-customize-notice-control.php:41
+msgid "Learn more about Dark Mode."
+msgstr "למידע נוסף על מצב כהה."
+
+#: classes/class-twenty-twenty-one-dark-mode.php:188
+msgid "Dark Mode support"
+msgstr "תמיכה במצב כהה"
+
+#: classes/class-twenty-twenty-one-dark-mode.php:378
+msgid "Twenty Twenty-One uses LocalStorage when Dark Mode support is enabled."
+msgstr "עשרים עשרים ואחת  משתמשת באחסון המקומי של הדפדפן כאשר תמיכה במצב כהה מופעלת."
+
+#: classes/class-twenty-twenty-one-dark-mode.php:380
+msgid "This website uses LocalStorage to save the setting when Dark Mode support is turned on or off.<br> LocalStorage is necessary for the setting to work and is only used when a user clicks on the Dark Mode button.<br> No data is saved in the database or transferred."
+msgstr "אתר אינטרנט זה משתמש באחסון מקומי של הדפדפן כדי לשמור את ההגדרה כאשר התמיכה במצב כהה מופעלת או כבויה.<br> תכונת האחסון המקומי של הדפדפן הכרחית כדי שההגדרה תפעל וייעשה בה שימוש רק לאחר שמשתמש ילחץ  על כפתור  מצב כהה.<br> לא יועבר ולא יישמר בבסיס הנתונים."
+
+#: inc/template-tags.php:77
+msgctxt "Label for sticky posts"
+msgid "Featured post"
+msgstr "פוסט מקודם"
+
+#: inc/template-functions.php:424
+msgctxt "Post password form"
+msgid "Password"
+msgstr "סיסמה"
+
+#: inc/template-functions.php:183
+msgctxt "Added to posts and pages that are missing titles"
+msgid "Untitled"
+msgstr "ללא כותרת"
+
+#: inc/template-functions.php:424
+msgctxt "Post password form"
+msgid "Submit"
+msgstr "שלח"
+
+#: classes/class-twenty-twenty-one-customize.php:138
+msgctxt "Customizer control"
+msgid "Background color"
+msgstr "צבע רקע"
+
+#: inc/block-patterns.php:136
+msgctxt "Block pattern sample content"
+msgid "Cambridge, MA, 02139"
+msgstr "קיימברידג', MA, 02139"
+
+#: inc/block-patterns.php:136
+msgctxt "Block pattern sample content"
+msgid "123 Main Street"
+msgstr "רחוב מיין 123"
+
+#: inc/block-patterns.php:136
+msgctxt "Block pattern sample content"
+msgid "123-456-7890"
+msgstr "123-456-7890"
+
+#: inc/block-patterns.php:136
+msgctxt "Block pattern sample content"
+msgid "example@example.com"
+msgstr "example@example.com"
+
+#. translators: %: Page number.
+#: image.php:48 template-parts/content/content-page.php:36
+#: template-parts/content/content-single.php:30
+#: template-parts/content/content.php:36
+msgid "Page %"
+msgstr "עמוד %"
+
+#: classes/class-twenty-twenty-one-dark-mode.php:334
+msgid "On"
+msgstr "פעיל"
+
+#: classes/class-twenty-twenty-one-dark-mode.php:331
+msgid "Off"
+msgstr "כבוי"
+
+#. translators: %s: On/Off
+#: classes/class-twenty-twenty-one-dark-mode.php:321
+msgid "Dark Mode: %s"
+msgstr "מצב כהה: %s"
+
+#: comments.php:34
+msgid "1 comment"
+msgstr "תגובה 1"
+
+#. translators: %s: Comment count number.
+#: comments.php:39
+msgctxt "Comments title"
+msgid "%s comment"
+msgid_plural "%s comments"
+msgstr[0] "תגובה %s"
+msgstr[1] "%s תגובות"
+
+#: functions.php:157
+msgctxt "Font size"
+msgid "S"
+msgstr "S"
+
+#: functions.php:163
+msgctxt "Font size"
+msgid "M"
+msgstr "ב"
+
+#: functions.php:169
+msgctxt "Font size"
+msgid "L"
+msgstr "נמוך"
+
+#: functions.php:175
+msgctxt "Font size"
+msgid "XL"
+msgstr "XL"
+
+#: functions.php:181
+msgctxt "Font size"
+msgid "XXL"
+msgstr "XXL"
+
+#: functions.php:187
+msgctxt "Font size"
+msgid "XXXL"
+msgstr "XXXL"
+
+#. translators: %s: WordPress Version.
+#: inc/back-compat.php:42 inc/back-compat.php:61 inc/back-compat.php:86
+msgid "This theme requires WordPress 5.3 or newer. You are running version %s. Please upgrade."
+msgstr "לתבנית עיצוב זו נדרשת וורדפרס מגרסה 5.3 ומעלה. באתר זה מופעלת כרגע  גרסה %s. יש לשדרג."
+
+#: functions.php:151
+msgctxt "Font size"
+msgid "XS"
+msgstr "XS"
+
+#: comments.php:85
+msgid "Leave a comment"
+msgstr "השאירו תגובה"
+
+#. translators: Hidden accessibility text.
+#: inc/menu-functions.php:35
+msgid "Open menu"
+msgstr "פתח תפריט"
+
+#: inc/template-functions.php:422
+msgid "This content is password protected. Please enter a password to view."
+msgstr "תוכן זה מוגן בסיסמה. נא להזין סיסמה כדי לצפות."
+
+#: inc/block-patterns.php:125
+msgid "&#8220;Reading&#8221; by Berthe Morisot"
+msgstr "&#8220;קריאה&#8221; מאת ברט מוריסוט"
+
+#: inc/block-patterns.php:125
+msgid "Reading"
+msgstr "קריאה"
+
+#: inc/starter-content.php:30 inc/starter-content.php:33
+msgctxt "Theme starter content"
+msgid "Create your website with blocks"
+msgstr "יצירת האתר  באמצעות בלוקים"
+
+#: inc/starter-content.php:73
+msgctxt "Theme starter content"
+msgid "Add block patterns"
+msgstr "הוספת מקבצי  בלוקים"
+
+#: inc/starter-content.php:77
+msgctxt "Theme starter content"
+msgid "Block patterns are pre-designed groups of blocks. To add one, select the Add Block button [+] in the toolbar at the top of the editor. Switch to the Patterns tab underneath the search bar, and choose a pattern."
+msgstr "מקבצי בלוקים הם קבוצות מעוצבות מראש של בלוקים. כדי להוסיף אחד, בחרו בלחצן הוספת בלוק [+] בסרגל הכלים שבראש העורך. עברו ללשונית מקבצי הבלוקים שמתחת לסרגל החיפוש ובחרו מקבץ."
+
+#: inc/starter-content.php:83
+msgctxt "Theme starter content"
+msgid "Frame your images"
+msgstr "מסגרו את התמונות"
+
+#: inc/starter-content.php:87
+msgctxt "Theme starter content"
+msgid "Twenty Twenty-One includes stylish borders for your content. With an Image block selected, open the \"Styles\" panel within the Editor sidebar. Select the \"Frame\" block style to activate it."
+msgstr "עשרים עשרים  ואחת כוללת אפשרויות סגנון לגבולות כחלק מתוכן. כשבלוק תמונה נבחר, פתחו את החלונית \"סגנונות\" בתוך סרגל הצד  של העורך. ובחרו סגנון בלוק \"מסגרת\" כדי להפעיל אותו."
+
+#: inc/starter-content.php:93
+msgctxt "Theme starter content"
+msgid "Overlap columns"
+msgstr "עמודות חופפות"
+
+#: inc/starter-content.php:97
+msgctxt "Theme starter content"
+msgid "Twenty Twenty-One also includes an overlap style for column blocks. With a Columns block selected, open the \"Styles\" panel within the Editor sidebar. Choose the \"Overlap\" block style to try it out."
+msgstr "עשרים עשרים ואחת כוללת גם סגנון של  חפיפה עבור בלוקי של עמודות. כשבלוק עמודות נבחר, פתחו את החלונית \"סגנונות\" בתוך הסרגל  הצידי של העורך. ובחרו בסגנון  \"חפיפה\" כדי לנסות אותו."
+
+#: inc/starter-content.php:112
+msgctxt "Theme starter content"
+msgid "Need help?"
+msgstr "זקוקים לעזרה?"
+
+#: inc/starter-content.php:122
+msgctxt "Theme starter content"
+msgid "Read the Theme Documentation"
+msgstr "קראו את תיעוד תבנית העיצוב"
+
+#: inc/starter-content.php:128
+msgctxt "Theme starter content"
+msgid "Check out the Support Forums"
+msgstr "בדקו בפורומים של התמיכה"
+
+#: inc/template-functions.php:424
+msgctxt "Post password form"
+msgid "Enter"
+msgstr "כניסה"
+
+#: inc/block-patterns.php:125
+msgid "Young Woman in Mauve"
+msgstr "אישה צעירה בסגול בהיר"
+
+#: inc/block-patterns.php:125
+msgid "In the Bois de Boulogne"
+msgstr "בבואה דה בולון"
+
+#: inc/block-patterns.php:125
+msgid "Villa with Orange Trees, Nice"
+msgstr "וילה עם עצי תפוז, ניס"
+
+#: inc/block-patterns.php:125
+msgid "The Garden at Bougival"
+msgstr "הגן בבוגיבל"
+
+#. translators: %s: Parent post.
+#: image.php:61
+msgid "Published in %s"
+msgstr "פורסם ב %s"
+
+#: classes/class-twenty-twenty-one-customize.php:85
+msgid "Excerpt Settings"
+msgstr "הגדרות תקציר"
+
+#: classes/class-twenty-twenty-one-customize.php:108
+msgid "Summary"
+msgstr "תקציר"
+
+#: inc/block-patterns.php:76
+msgid "Playing in the Sand"
+msgstr "משחקים בחול"
+
+#: inc/block-patterns.php:89 inc/block-patterns.php:125
+#: inc/starter-content.php:61
+msgid "&#8220;Young Woman in Mauve&#8221; by Berthe Morisot"
+msgstr "\"אישה צעירה בסגול בהיר\" מאת ברט מוריסוט"
+
+#: inc/block-styles.php:98
+msgid "Thick"
+msgstr "עבה"
+
+#: classes/class-twenty-twenty-one-customize.php:106
+msgid "On Archive Pages, posts show:"
+msgstr "בדפי ארכיון, הודעות להציג:"
+
+#: single.php:40
+msgid "Previous post"
+msgstr "פוסט קודם"
+
+#: searchform.php:26
+msgctxt "submit button"
+msgid "Search"
+msgstr "חיפוש"
+
+#. translators: %s: List of categories.
+#: inc/template-tags.php:107 inc/template-tags.php:149
+msgid "Categorized as %s"
+msgstr "בקטגוריה %s"
+
+#: 404.php:16 template-parts/content/content-none.php:30
+msgid "Nothing here"
+msgstr "אין כאן שום דבר"
+
+#: 404.php:21
+msgid "It looks like nothing was found at this location. Maybe try a search?"
+msgstr "נראה שאין כאן כלום. שננסה את אפשרות החיפוש?"
+
+#: classes/class-twenty-twenty-one-customize.php:109
+msgid "Full text"
+msgstr "טקסט מלא"
+
+#: comments.php:61 image.php:45 inc/template-tags.php:224
+#: template-parts/content/content-page.php:33
+#: template-parts/content/content-single.php:27
+#: template-parts/content/content.php:33
+msgid "Page"
+msgstr "עמוד"
+
+#: comments.php:66
+msgid "Older comments"
+msgstr "תגובות קודמות"
+
+#: comments.php:70
+msgid "Newer comments"
+msgstr "תגובות חדשות יותר"
+
+#: comments.php:78
+msgid "Comments are closed."
+msgstr "תגובות סגורות."
+
+#: footer.php:24 functions.php:77 inc/starter-content.php:165
+msgid "Secondary menu"
+msgstr "תפריט משני"
+
+#. translators: %s: WordPress.
+#: footer.php:67
+msgid "Proudly powered by %s."
+msgstr "מופעל על ידי %s."
+
+#: functions.php:76 inc/starter-content.php:154
+#: template-parts/header/site-nav.php:13
+msgid "Primary menu"
+msgstr "תפריט ראשי"
+
+#: functions.php:150
+msgid "Extra small"
+msgstr "קטן מאוד"
+
+#: functions.php:156
+msgid "Small"
+msgstr "קטן"
+
+#: functions.php:162
+msgid "Normal"
+msgstr "רגיל"
+
+#: functions.php:168
+msgid "Large"
+msgstr "גדול"
+
+#: functions.php:174
+msgid "Extra large"
+msgstr "גדול מאוד"
+
+#: functions.php:180
+msgid "Huge"
+msgstr "ענק"
+
+#: functions.php:186
+msgid "Gigantic"
+msgstr "ענקי"
+
+#: functions.php:218
+msgid "Black"
+msgstr "שָׁחוֹר"
+
+#: functions.php:228
+msgid "Gray"
+msgstr "אפור"
+
+#: functions.php:233
+msgid "Green"
+msgstr "ירוק"
+
+#: functions.php:238
+msgid "Blue"
+msgstr "כחול"
+
+#: functions.php:243
+msgid "Purple"
+msgstr "סגול"
+
+#: functions.php:248
+msgid "Red"
+msgstr "אדום"
+
+#: functions.php:253
+msgid "Orange"
+msgstr "כתום"
+
+#: functions.php:258
+msgid "Yellow"
+msgstr "צהוב"
+
+#: functions.php:263
+msgid "White"
+msgstr "לבן"
+
+#: functions.php:361
+msgid "Footer"
+msgstr "סרגל תחתון"
+
+#: functions.php:363
+msgid "Add widgets here to appear in your footer."
+msgstr "הוסף וידג'ט כאן אשר יופיע בסרגל התחתון של האתר."
+
+#. translators: Hidden accessibility text.
+#: header.php:29
+msgid "Skip to content"
+msgstr "דילוג לתוכן"
+
+#. translators: Hidden accessibility text.
+#: image.php:84
+msgctxt "Used before full size attachment link."
+msgid "Full size"
+msgstr "גודל מלא"
+
+#: inc/block-patterns.php:47
+msgid "Large text"
+msgstr "טקסט גדול"
+
+#: inc/block-patterns.php:51
+msgid "A new portfolio default theme for WordPress"
+msgstr "תבנית ברירת המחדל החדשה לפורטפוליו בוורדפרס"
+
+#: inc/block-patterns.php:59
+msgid "Links area"
+msgstr "אזור קישורים"
+
+#: inc/block-patterns.php:64
+msgid "Let&#8217;s Connect."
+msgstr "הבה ונתחבר."
+
+#: inc/block-patterns.php:64
+msgid "Twitter"
+msgstr "טוויטר"
+
+#: inc/block-patterns.php:64
+msgid "Instagram"
+msgstr "אינסטגרם"
+
+#: inc/block-patterns.php:64
+msgid "Dribbble"
+msgstr "דריבל"
+
+#: inc/block-patterns.php:72
+msgid "Media and text article title"
+msgstr "כותרת לפוסט ולמדיה"
+
+#: inc/block-patterns.php:132
+msgid "Contact information"
+msgstr "פרטי קשר"
+
+#: inc/block-styles.php:26
+msgid "Overlap"
+msgstr "חפיפה"
+
+#: inc/block-styles.php:62
+msgid "Frame"
+msgstr "מסגרת"
+
+#: inc/block-styles.php:71
+msgid "Dividers"
+msgstr "חוצצים"
+
+#. translators: %s: Publish date.
+#: inc/template-tags.php:29
+msgid "Published %s"
+msgstr "פורסם ב %s"
+
+#. translators: %s: Author name.
+#: inc/template-tags.php:49 template-parts/post/author-bio.php:19
+msgid "By %s"
+msgstr "מאת %s"
+
+#. translators: Used between list items, there is a space after the comma.
+#: functions.php:654
+msgid ", "
+msgstr ", "
+
+#. translators: %s: List of tags.
+#: inc/template-tags.php:116 inc/template-tags.php:158
+msgid "Tagged %s"
+msgstr "תוייג %s"
+
+#: searchform.php:24
+msgid "Search&hellip;"
+msgstr "חפש&hellip;"
+
+#. translators: %s: Parent post link.
+#: single.php:25
+msgid "<span class=\"meta-nav\">Published in</span><span class=\"post-title\">%s</span>"
+msgstr "פורסמו <span class=\"count\">(%s)</span>"
+
+#: single.php:39
+msgid "Next post"
+msgstr "פוסט הבא"
+
+#: template-parts/content/content-none.php:56
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr "מצטערים, אבל שום דבר לא תואם למונחי החיפוש שלך. נסה שוב עם כמה מילות מפתח שונות."
+
+#: template-parts/content/content-none.php:61
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "נראה שאנחנו לא מוצאים את מה שחיפשת. אולי חיפוש יכול לעזור."
+
+#: template-parts/header/site-nav.php:16
+msgid "Menu"
+msgstr "תפריט"
+
+#: template-parts/header/site-nav.php:19
+msgid "Close"
+msgstr "סגור"
+
+#. translators: %d: The number of search results.
+#: search.php:33
+msgid "We found %d result for your search."
+msgid_plural "We found %d results for your search."
+msgstr[0] "מצאנו  תוצאה %d עבור החיפוש שלך."
+msgstr[1] "מצאנו  %d תוצאות עבור החיפוש שלך."
+
+#. translators: %s: Search term.
+#: search.php:21 template-parts/content/content-none.php:22
+msgid "Results for \"%s\""
+msgstr "תוצאות עבור \"%s\""
+
+#: inc/block-styles.php:35 inc/block-styles.php:44 inc/block-styles.php:53
+#: inc/block-styles.php:80 inc/block-styles.php:89
+msgid "Borders"
+msgstr "גבולות"
+
+#: inc/block-patterns.php:135
+msgctxt "Block pattern description"
+msgid "A block with 3 columns that display contact information and social media links."
+msgstr "בלוק עם 3 עמודות שמציג פרטי קשר וקישורי מדיה חברתית."
+
+#: inc/block-patterns.php:124
+msgctxt "Block pattern description"
+msgid "A list of projects with thumbnail images."
+msgstr "רשימה של פרוייקטים עם תמונות ממוזערות."
+
+#: inc/block-patterns.php:113
+msgctxt "Block pattern description"
+msgid "An overlapping columns block with two images and a text description."
+msgstr "בלוק עמודות חופפות עם שתי תמונות ותיאור טקסטואלי."
+
+#: inc/block-patterns.php:122
+msgid "Portfolio list"
+msgstr "רשימת פורטפוליו"
+
+#: inc/block-patterns.php:109
+msgid "Overlapping images and text"
+msgstr "תמונות וטקסט חופפים"
+
+#: inc/block-patterns.php:97
+msgid "Two images showcase"
+msgstr "תצודה של שתי תמונות"
+
+#: inc/block-patterns.php:75
+msgctxt "Block pattern description"
+msgid "A Media & Text block with a big image on the left and a heading on the right. The heading is followed by a separator and a description paragraph."
+msgstr "בלוק מדיה וטקסט עם תמונה גדולה מימין וכותרת משמאל. אחרי הכותרת מפריד ופיסקת תיאור."
+
+#: inc/block-patterns.php:64
+msgid "example@example.com"
+msgstr "example@example.com"
+
+#: inc/block-patterns.php:84
+msgid "Overlapping images"
+msgstr "תמונות חופפות"
+
+#: inc/block-patterns.php:63
+msgctxt "Block pattern description"
+msgid "A huge text followed by social networks and email address links."
+msgstr "טקסט ענק שלאחריו רשתות חברתיות וכתובות דוא\"ל"
+
+#: functions.php:223 inc/block-styles.php:107
+msgid "Dark gray"
+msgstr "אפור כהה"
+
+#. translators: %s: Post title. Only visible to screen readers.
+#: image.php:70 image.php:96 inc/template-tags.php:92 inc/template-tags.php:133
+#: template-parts/content/content-page.php:48
+msgid "Edit %s"
+msgstr "עריכה %s"
+
+#. translators: %s: Post title. Only visible to screen readers.
+#: inc/template-functions.php:138
+msgid "Continue reading %s"
+msgstr "קראו עוד %s"
+
+#: inc/block-patterns.php:88
+msgctxt "Block pattern description"
+msgid "Three images inside an overlapping columns block."
+msgstr "שלוש תמונות בתוך בלוק של עמודות חופפות."
+
+#: inc/block-patterns.php:100
+msgctxt "Block pattern description"
+msgid "A media & text block with a big image on the left and a smaller one with bordered frame on the right."
+msgstr "בלוק מדיה טקסט עם תמונה גדולה בצד שמאל ותמונה קטנה יותר עם מסגרת גבולית מימין."
+
+#: classes/class-twenty-twenty-one-customize.php:75
+msgid "Display Site Title & Tagline"
+msgstr "הצגת שם האתר ותיאור האתר"
+
+#. Author URI of the theme
+#: footer.php:68
+#, gp-priority: low
+msgid "https://wordpress.org/"
+msgstr "https://wordpress.org/"
+
+#. Author of the theme
+#, gp-priority: low
+msgid "the WordPress team"
+msgstr "צוות וורדפרס"
+
+#. Theme URI of the theme
+#, gp-priority: low
+msgid "https://wordpress.org/themes/twentytwentyone/"
+msgstr "https://wordpress.org/themes/twentytwentyone/"
