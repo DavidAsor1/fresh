@@ -6,7 +6,7 @@
  * @subpackage Administration
  */
 
-/** WordPress Administration Bootstrap 111*/
+/** WordPress Administration Bootstrap david test*/
 require_once __DIR__ . '/admin.php';
 
 // Used in the HTML title tag.
