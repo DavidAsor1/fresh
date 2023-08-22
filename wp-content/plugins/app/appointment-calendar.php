@@ -57,7 +57,7 @@ function ac_process_appointment_form() {
         ));
 
         if ($existing_appointment) {
-            echo 'The selected appointment slot is not available.';
+            // echo 'The selected appointment slot is not available.';
         } else {
             // Save the appointment in the table
             $wpdb->insert(
@@ -71,7 +71,7 @@ function ac_process_appointment_form() {
                 array('%s', '%s', '%s', '%s')
             );
 
-            echo 'Appointment booked successfully.';
+            // echo 'Appointment booked successfully.';
         }
     }
 }
@@ -81,7 +81,7 @@ function ac_appointment_form_shortcode()
 {
     ob_start();
     ?>
-    <form method="post">
+    <form method="post" class="appointment-form-container">
         <label for="ac_name">Your Name:</label>
         <input type="text" name="ac_name" id="ac_name" required><br><br>
         <label for="ac_phone">Your Phone:</label>
@@ -181,3 +181,11 @@ function convertTimeSlots($timeSlots)
     
     return $convertedSlots;
 }
+
+
+
+
+
+
+
+
