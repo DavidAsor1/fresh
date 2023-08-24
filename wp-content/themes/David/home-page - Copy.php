@@ -1,5 +1,5 @@
 <?php
-	/* Template Name: HomePage */
+	/* Template Name: HomePage-2 */
 ?>
 
 <!DOCTYPE html>
