@@ -82,16 +82,16 @@ function ac_appointment_form_shortcode()
     ob_start();
     ?>
     <form method="post" class="appointment-form-container">
-        <label for="ac_name">Your Name:</label>
+        <label for="ac_name">שם מלא</label>
         <input type="text" name="ac_name" id="ac_name" required><br><br>
-        <label for="ac_phone">Your Phone:</label>
+        <label for="ac_phone">מס' פלאפון</label>
         <input type="tel" name="ac_phone" id="ac_phone" required><br><br>
-        <label for="ac_date">Select a date:</label>
+        <label for="ac_date">בחר תאריך לקביעת תור</label>
         <input type="date" name="ac_date" id="ac_date" required onchange="updateTimeSlots()"><br><br>
-        <label for="ac_time">Select a time:</label>
-        <select name="ac_time" id="ac_time" required>
+        <label for="ac_time">בחר שעה</label>
+        <select disabled name="ac_time" id="ac_time" required>
         </select><br><br>
-        <input type="submit" value="Book Appointment">
+        <input type="submit" value="קבע תור">
     </form>
 
     <script>
