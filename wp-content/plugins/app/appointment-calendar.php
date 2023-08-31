@@ -49,15 +49,27 @@ function ac_process_appointment_form() {
         $date = sanitize_text_field($_POST['ac_date']);
         $time = sanitize_text_field($_POST['ac_time']);
 
-        // Check if the appointment slot is available
+        $seven_days_ago = date('Y-m-d', strtotime('-7 days'));
+
+        // Get the latest appointment for the given phone number within the last 7 days
+        $latest_appointment_within_7_days = $wpdb->get_row($wpdb->prepare(
+            "SELECT * FROM $table_name WHERE user_phone = %s AND appointment_date >= %s ORDER BY appointment_date DESC LIMIT 1",
+            $phone,
+            $seven_days_ago
+        ));
+
+        
+
         $existing_appointment = $wpdb->get_row($wpdb->prepare(
             "SELECT * FROM $table_name WHERE appointment_date = %s AND appointment_time = %s",
             $date,
             $time
         ));
-
-        if ($existing_appointment) {
-            // echo 'The selected appointment slot is not available.';
+        
+        
+        if ($existing_appointment || $existing_appointment) {
+             echo 'The selected appointment slot is not available.';
+     
         } else {
             // Save the appointment in the table
             $wpdb->insert(
@@ -71,15 +83,48 @@ function ac_process_appointment_form() {
                 array('%s', '%s', '%s', '%s')
             );
 
-            // echo 'Appointment booked successfully.';
+            //echo 'Appointment booked successfully.';
         }
     }
 }
 add_action('template_redirect', 'ac_process_appointment_form');
 
+function pre($echo){
+    echo '<pre style="background:black;color:green;">';print_r($echo);echo '</pre>';
+}
+
+function generateCalendarArray() {
+    $calendar_days = get_option('calendar_days', array());
+
+    $days_of_week = array('sunday','monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday');
+    $result = array();
+
+    foreach ($days_of_week as $day) {
+        $start_time = isset($calendar_days[$day]['start_time']) ? $calendar_days[$day]['start_time'] : '';
+        $end_time = isset($calendar_days[$day]['end_time']) ? $calendar_days[$day]['end_time'] : '';
+
+        $result[] = array(
+            'day' => $day,
+            'start_time' => $start_time,
+            'end_time' => $end_time
+        );
+    }
+
+    return $result;
+}
+
+function enqueue_jquery_ui_datepicker() {
+    wp_enqueue_script('jquery-ui-datepicker');
+    wp_enqueue_style('jquery-ui-datepicker-style', 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
+}
+add_action('wp_enqueue_scripts', 'enqueue_jquery_ui_datepicker');
+
+
+
 function ac_appointment_form_shortcode()
 {
     ob_start();
+    
     ?>
     <form method="post" class="appointment-form-container">
         <label for="ac_name">שם מלא</label>
@@ -87,14 +132,44 @@ function ac_appointment_form_shortcode()
         <label for="ac_phone">מס' פלאפון</label>
         <input type="tel" name="ac_phone" id="ac_phone" required><br><br>
         <label for="ac_date">בחר תאריך לקביעת תור</label>
-        <input type="date" name="ac_date" id="ac_date" required onchange="updateTimeSlots()"><br><br>
+        <input type="date" name="ac_date" id="ac_date" required ><br><br>
         <label for="ac_time">בחר שעה</label>
         <select disabled name="ac_time" id="ac_time" required>
         </select><br><br>
         <input type="submit" value="קבע תור">
     </form>
 
+   <?php
+
+$calendar_selected_days = get_option('calendar_selected_days', '');
+//pre($calendar_selected_days);
+   ?>
+   
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+    <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
     <script>
+        jQuery(document).ready(function($) {
+            $('#ac_date').datepicker({
+                dateFormat: 'yy-mm-dd', 
+                beforeShowDay: function(date) {
+                    var day = date.getDay(); // Get day of the week (0 - Sunday, 1 - Monday, etc.)
+                    var currentDate = new Date();
+                    currentDate.setHours(0, 0, 0, 0); // Set current time to midnight
+
+                    // Disable all dates before the current date and Sundays
+                    if (date < currentDate || day === 0) {
+                        return [false];
+                    }
+                    
+                    return [true];
+                },
+                onSelect: function(selectedDate) {
+                    updateTimeSlots(selectedDate);
+                }
+            });
+        });
+
         function updateTimeSlots() {
             var selectedDate = document.getElementById('ac_date').value;
 
@@ -114,6 +189,10 @@ function ac_appointment_form_shortcode()
                             option.value = timeSlots[i];
                             option.text = timeSlots[i];
                             selectElement.appendChild(option);
+                        }
+                        var acTimeElement = document.getElementById('ac_time');
+                        if (acTimeElement) {
+                            acTimeElement.removeAttribute('disabled');
                         }
                     }
                 };
@@ -148,10 +227,23 @@ function ac_get_available_time_slots()
         ));
 
         // Generate time slots for the day
+        $days_of_week = array('sunday','monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday');
+        $day_numeric = date('w', strtotime($selected_date));
+        //$current_day = $days_of_week[$day_numeric];
+        $calendar_array = generateCalendarArray();
+        // pre($calendar_array[$day_numeric]['start_time']);
+        $start_time = strtotime($calendar_array[$day_numeric]['start_time']);
+        $end_time = strtotime($calendar_array[$day_numeric]['end_time']);
+       
         $time_slots = array();
-        $start_time = strtotime('9:00 AM');
-        $end_time = strtotime('5:00 PM');
-        $interval = 30 * 60; // 30 minutes in seconds
+        //pre(strtotime($calendar_array[$day_numeric]['start_time']));
+        //pre("1- ". $current_day);
+        //pre(strtotime('9:00 AM'));
+        //$start_time = strtotime('9:00 AM');
+        //$end_time = strtotime('5:00 PM');
+        $calendar_interval = get_option('calendar_interval', '');
+        //pre($calendar_interval); 
+        $interval = $calendar_interval * 60; // 30 minutes in seconds
 
         for ($time = $start_time; $time <= $end_time; $time += $interval) {
             $hour = date('H:i:s', $time);

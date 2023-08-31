@@ -691,7 +691,6 @@ banner
 }
 
 .main-banner .caption h2 {
-  margin-top: 30px;
   margin-bottom: 25px;
   font-size: 84px;
   text-transform: uppercase;
@@ -1291,7 +1290,16 @@ responsive
 }
 
 @media (max-width: 768px) {
-
+	.appointment-form-container input[type="text"],
+	.appointment-form-container input[type="tel"],
+	.appointment-form-container input[type="date"],
+	.appointment-form-container select {
+		width: 100%;
+		padding: 5px;
+		margin-bottom: 10px;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+	}
 }
 @media (max-width: 450px) {
   .feature-item .right-content a.text-button {
