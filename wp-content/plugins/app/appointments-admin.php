@@ -78,11 +78,48 @@ function ac_appointments_admin_page()
             echo '<p>Appointment not found.</p>';
         }
     } else {
-             // Display the list of appointments
+             
         $start_date = isset($_GET['start_date']) ? sanitize_text_field($_GET['start_date']) : '';
         $end_date = isset($_GET['end_date']) ? sanitize_text_field($_GET['end_date']) : '';
         $appointments = array();
-
+        
+        // Calculate date ranges for filters
+        if (isset($_GET['filter'])) {
+            $filter = sanitize_text_field($_GET['filter']);
+            switch ($filter) {
+                case 'all':
+                    $start_date = '';
+                    $end_date = '';
+                   break;
+                case 'today':
+                    $start_date = $end_date = date('Y-m-d');
+                    break;
+                case 'tomorrow':
+                    $start_date = $end_date = date('Y-m-d', strtotime('+1 day'));
+                    break;
+                case 'this_week':
+                    $start_date = date('Y-m-d', strtotime('this week'));
+                    $end_date = date('Y-m-d', strtotime('this week +6 days'));
+                    break;
+                case 'next_week':
+                    $start_date = date('Y-m-d', strtotime('next week'));
+                    $end_date = date('Y-m-d', strtotime('next week +6 days'));
+                    break;
+                case 'last_month':
+                    $start_date = date('Y-m-d', strtotime('first day of last month'));
+                    $end_date = date('Y-m-d', strtotime('last day of last month'));
+                    break;
+                case 'next_month':
+                    $start_date = date('Y-m-d', strtotime('first day of next month'));
+                    $end_date = date('Y-m-d', strtotime('last day of next month'));
+                    break;
+            }
+        } else {
+            // Default: Show today and future appointments
+            $start_date = date('Y-m-d');
+            $end_date = date('Y-m-d', strtotime('+1 year')); // Change this range as needed
+        }
+        
         // Check if the start and end dates are specified
         if (!empty($start_date) && !empty($end_date)) {
             $appointments = $wpdb->get_results($wpdb->prepare(
@@ -94,20 +131,60 @@ function ac_appointments_admin_page()
             // Fetch all appointments
             $appointments = $wpdb->get_results("SELECT * FROM $table_name ORDER BY appointment_date ASC, appointment_time ASC");
         }
-
+        
+        // Get the counts for each filter
+        $filter_counts = array(
+            'all' => array(
+                'count' => count($wpdb->get_results("SELECT * FROM $table_name")),
+                'display_name' => 'הכל'
+            ),
+            'today' => array(
+                'count' => count($wpdb->get_results("SELECT * FROM $table_name WHERE appointment_date = CURDATE()")),
+                'display_name' => 'היום'
+            ),
+            'tomorrow' => array(
+                'count' => count($wpdb->get_results("SELECT * FROM $table_name WHERE appointment_date = DATE_ADD(CURDATE(), INTERVAL 1 DAY)")),
+                'display_name' => 'מחר'
+            ),
+            'this_week' => array(
+                'count' => count($wpdb->get_results("SELECT * FROM $table_name WHERE WEEK(appointment_date) = WEEK(CURDATE())")),
+                'display_name' => 'השבוע'
+            ),
+            'next_week' => array(
+                'count' => count($wpdb->get_results("SELECT * FROM $table_name WHERE WEEK(appointment_date) = WEEK(DATE_ADD(CURDATE(), INTERVAL 1 WEEK))")),
+                'display_name' => 'השבוע הבא'
+            ),
+            /* 'last_month' => array(
+                'count' => count($wpdb->get_results("SELECT * FROM $table_name WHERE MONTH(appointment_date) = MONTH(DATE_SUB(CURDATE(), INTERVAL 1 MONTH))")),
+                'display_name' => 'החודש הקודם'
+            ), */ 
+            'next_month' => array(
+                '' => count($wpdb->get_results("SELECT * FROM $table_name WHERE MONTH(appointment_date) = MONTH(DATE_ADD(CURDATE(), INTERVAL 1 MONTH))")),
+                'display_name' => 'החודש הבא'
+            )
+        );
+        
         ?>
         <h2>Appointments</h2>
         <div class="date-filter">
             <form method="get" action="<?php echo admin_url('admin.php'); ?>">
                 <strong>Date Filter:</strong>
                 <label for="start_date">Start Date:</label>
-                <input type="date" name="start_date" id="start_date" value="<?php echo esc_attr($start_date); ?>" required>
-                <label for="end_date">End Date:</label>
-                <input type="date" name="end_date" id="end_date" value="<?php echo esc_attr($end_date); ?>" required>
+                <input type="date" name="start_date" id="start_date" value="<?php echo esc_attr($start_date); ?>">
+                <label for="end_date">End Date:</label>count
+                <input type="date" name="end_date" id="end_date" value="<?php echo esc_attr($end_date); ?>">
                 <input type="hidden" name="page" value="appointments-admin">
+                <select name="filter">
+                    <?php foreach ($filter_counts as $filter_option => $count): ?>
+                        <option value="<?=$filter_option?>"><?=$count['display_name']?> (<?= $count['count']?>)</option>
+                    <?php endforeach; ?>
+                </select>
                 <input type="submit" value="Filter">
             </form>
         </div>
+        
+
+             
         <table class="wp-list-table widefat fixed striped">
             <thead>
                 <tr>
@@ -240,8 +317,8 @@ function ac_get_available_time_slotss($selected_date, $selected_time = '')
         $selected_date_formatted
     ));
 
-    $start_time = strtotime('9:00 AM');
-    $end_time = strtotime('5:00 PM');
+    $start_time = strtotime('1:00 AM');
+    $end_time = strtotime('11:00 PM');
     $interval = 30 * 60; // 30 minutes in seconds
 
     $time_slots = array();
@@ -401,4 +478,130 @@ function hour_settings_end_hour_callback() {
 }
 
 
+function calendar_settings_page() {
+    add_menu_page(
+        'Calendar Settings',
+        'Calendar Settings',
+        'manage_options',
+        'calendar-settings',
+        'render_calendar_settings_page'
+    );
+}
+add_action('admin_menu', 'calendar_settings_page');
+
+function render_calendar_settings_page() {
+    ?>
+    <div class="wrap">
+        <h2>Calendar Settings</h2>
+        <form method="post" action="options.php">
+            <?php
+            settings_fields('calendar_settings');
+            do_settings_sections('calendar-settings');
+            submit_button();
+            ?>
+        </form>
+    </div>
+    <?php
+}
+
+function calendar_settings_init() {
+    add_settings_section(
+        'calendar_section',
+        'Calendar Settings',
+        'calendar_section_callback',
+        'calendar-settings'
+    ); 
+
+    $days_of_week = array('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday');
+    foreach ($days_of_week as $day) {
+        add_settings_field(
+            'calendar_' . $day,
+            ucfirst($day),
+            'calendar_day_callback',
+            'calendar-settings',
+            'calendar_section',
+            array('day' => $day)
+        );
+    }
+
+    // Add a new settings field for interval
+    add_settings_field(
+        'calendar_interval',
+        'Interval',
+        'calendar_interval_callback',
+        'calendar-settings',
+        'calendar_section'
+    );
+
+    // Add a new settings field for selecting days of the week
+    add_settings_field(
+        'calendar_selected_days',
+        'Selected Days of the Week',
+        'calendar_selected_days_callback',
+        'calendar-settings',
+        'calendar_section'
+    );
+
+    register_setting('calendar_settings', 'calendar_days');
+    register_setting('calendar_settings', 'calendar_interval');
+    register_setting('calendar_settings', 'calendar_selected_days'); // Register the selected days setting
+}
+add_action('admin_init', 'calendar_settings_init');
+
+function calendar_section_callback() {
+    echo 'Manage your calendar settings here.';
+}
+
+function enqueue_select2_scripts() {
+    
+    wp_enqueue_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js', array(), '3.6.4', true);
+    // Enqueue Select2 scripts and styles
+    wp_enqueue_script('select2', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js', array('jquery'), '4.1.0', true);
+    wp_enqueue_style('select2', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css');
+
+    // Enqueue jQuery and jQuery UI
+    wp_enqueue_script('jquery-ui-core', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js', array('jquery'), '1.11.1', true);
+    wp_enqueue_script('jquery-ui-datepicker', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js', array('jquery'), '1.11.1', true);
+
+    // Enqueue jQuery UI stylesheet
+    wp_enqueue_style('jquery-ui-datepicker-style', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css');
+}
+add_action('admin_enqueue_scripts', 'enqueue_select2_scripts');
+
+
+function calendar_day_callback($args) {
+    $day = $args['day'];
+    $calendar_days = get_option('calendar_days', array());
+
+    $start_time = isset($calendar_days[$day]['start_time']) ? $calendar_days[$day]['start_time'] : '';
+    $end_time = isset($calendar_days[$day]['end_time']) ? $calendar_days[$day]['end_time'] : '';
+
+    echo ' תור ראשון - <input type="time" name="calendar_days[' . $day . '][start_time]" value="' . esc_attr($start_time) . '"> - ';
+    echo 'תור אחרון - <input type="time" name="calendar_days[' . $day . '][end_time]" value="' . esc_attr($end_time) . '">';
+}
+
+function calendar_interval_callback() {
+    $calendar_interval = get_option('calendar_interval', '');
+
+    echo '<input type="number" name="calendar_interval" value="' . esc_attr($calendar_interval) . '" min="1" step="1">';
+}
+
+function calendar_selected_days_callback() {
+    $calendar_selected_days = get_option('calendar_selected_days', array());
+
+    $days_of_week = array('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday');
+
+    echo '<select name="calendar_selected_days[]" class="select2" multiple>';
+    foreach ($days_of_week as $day) {
+        $selected = in_array($day, $calendar_selected_days) ? 'selected' : '';
+        echo '<option value="' . esc_attr($day) . '" ' . $selected . '>' . ucfirst($day) . '</option>';
+    }
+    echo '</select>';
+    echo '<script>
+            jQuery(document).ready(function($) {
+               
+                $("select[name=\'calendar_selected_days[]\']").select2();
+            });
+        </script>';
+}
 
